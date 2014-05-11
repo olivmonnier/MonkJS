@@ -1,7 +1,16 @@
 MonkJS
 ======
-# Getting started
+## Getting started
 ```javascript
-bower install Monkjs
+bower install monkjs
 ```
-# How it works
+## How it works
+```javascript
+var Class = $Class(null, {
+  __construct : function(){
+    console.log('my new instance');
+  }
+});
+
+var obj = new Class();
+```
