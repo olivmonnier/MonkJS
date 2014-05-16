@@ -8,10 +8,10 @@
     i = void 0;
     Child = function() {
       if (Child.surrogate && Child.surrogate.hasOwnProperty("__construct")) {
-        Child.surrogate.__construct.apply(this, arguments_);
+        Child.surrogate.__construct.apply(this, arguments);
       }
       if (Child.prototype.hasOwnProperty("__construct")) {
-        Child.prototype.__construct.apply(this, arguments_);
+        Child.prototype.__construct.apply(this, arguments);
       }
     };
     Child.extend = function(obj) {
