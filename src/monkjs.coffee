@@ -3,8 +3,8 @@ Class = (Parent, props) ->
   F = undefined
   i = undefined
   Child = ->
-    Child.surrogate.__construct.apply this, arguments_  if Child.surrogate and Child.surrogate.hasOwnProperty("__construct")
-    Child::__construct.apply this, arguments_  if Child::hasOwnProperty("__construct")
+    Child.surrogate.__construct.apply this, arguments  if Child.surrogate and Child.surrogate.hasOwnProperty("__construct")
+    Child::__construct.apply this, arguments  if Child::hasOwnProperty("__construct")
     return
 
   
