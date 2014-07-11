@@ -9,7 +9,7 @@ Class = (Parent, props) ->
 
   
   #Adding class properties extend
-  Child.extend = (obj) ->
+  Child.extendClass = (obj) ->
     for n of obj
       Child[n] = obj[n]
     return
@@ -27,7 +27,35 @@ Class = (Parent, props) ->
   F:: = Parent::
   Child:: = new F()
   Child.surrogate = Parent::
-  Child::constructor = Child
+  Child::$constructor = Child
+  Child::$extend = (obj) ->
+    for n of obj
+      this[n] = obj[n]
+    return
+  Child::$watch = (prop, handler) ->
+    oldval = this[prop]
+    newval = oldval
+    getter = ->
+      newval
+
+    setter = (val) ->
+      oldval = newval
+      newval = handler.call(this, prop, oldval, val)
+
+    if delete this[prop]
+      Object.defineProperty this, prop,
+        get: getter
+        set: setter
+        enumerable: true
+        configurable: true
+
+    return
+  Child::$unwatch = (prop) ->
+    val = this[prop]
+    delete this[prop]
+
+    this[prop] = val
+    return
   for i of props
     Child::[i] = props[i]  if props.hasOwnProperty(i)
   Child
