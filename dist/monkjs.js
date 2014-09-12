@@ -2,31 +2,32 @@
   var Class, Decorator, Policies, fn, root;
 
   fn = {
-    flip: function(fn){
-      return function(first, second){
-        if(arguments.length === 2){
+    flip: function(fn) {
+      return function(first, second) {
+        if (arguments.length === 2) {
           return fn.call(second, first);
-        }
-        else{
-          return function(second){
+        } else {
+          return function(second) {
             return fn.call(second, first);
           };
         }
       };
     },
-    extend: function(consumer, provider){
+    extend: function(consumer, provider) {
       var key;
-      for(key in provider){
-        if(provider.hasOwnProperty(key)){
+      key = void 0;
+      for (key in provider) {
+        if (provider.hasOwnProperty(key)) {
           consumer[key] = provider[key];
         }
       }
       return consumer;
     },
-    include: function(consumer, provider){
+    include: function(consumer, provider) {
       var key;
-      for(key in provider){
-        if(provider.hasOwnProperty(key)){
+      key = void 0;
+      for (key in provider) {
+        if (provider.hasOwnProperty(key)) {
           consumer.prototype[key] = provider[key];
         }
       }
@@ -35,12 +36,12 @@
   };
 
   Class = function(Parent, props) {
-    var Child, F, i;
+    var Child, F, i, instance;
     Child = void 0;
     F = void 0;
     i = void 0;
-    if (props.hasOwnProperty("instance")){
-      var instance = props.instance;
+    if (props.hasOwnProperty("instance")) {
+      instance = props.instance;
       delete props.instance;
     }
     Child = function() {
@@ -50,13 +51,13 @@
       if (Child.prototype.hasOwnProperty("__construct")) {
         Child.prototype.__construct.apply(this, arguments);
       }
-      if(instance !== undefined){
-        if(typeof instance === "object"){
+      if (instance !== undefined) {
+        if (typeof instance === "object") {
           fn.extend(this, instance);
         }
       }
     };
-    Child.extendClass = function(obj){
+    Child.extendClass = function(obj) {
       return fn.extend(Child, obj);
     };
     Child.include = function(obj) {
@@ -73,6 +74,10 @@
     };
     Child.prototype.$watch = function(prop, handler) {
       var getter, newval, oldval, setter;
+      getter = void 0;
+      newval = void 0;
+      oldval = void 0;
+      setter = void 0;
       oldval = this[prop];
       newval = oldval;
       getter = function() {
@@ -94,16 +99,19 @@
     };
     Child.prototype.$unwatch = function(prop) {
       var val;
+      val = void 0;
       val = this[prop];
       delete this[prop];
       this[prop] = val;
       return this;
     };
-    Child.prototype.$getAttributes = function(){
-      var key, array = [];
-      for(key in this){
-        if(typeof this[key] !== 'function'){
-          var obj = {};
+    Child.prototype.$getAttributes = function() {
+      var array, key, obj;
+      key = void 0;
+      array = [];
+      for (key in this) {
+        if (typeof this[key] !== "function") {
+          obj = {};
           obj[key] = this[key];
           array.push(obj);
         }
@@ -113,15 +121,18 @@
     return fn.include(Child, props);
   };
 
-  Decorator = fn.flip(function(decoration){
-    function Decorated(){
-      var self = this instanceof Decorated ? this : new Decorated();
+  Decorator = fn.flip(function(decoration) {
+    var Decorated, deco, instance, key;
+    Decorated = function() {
+      var self;
+      self = (this instanceof Decorated ? this : new Decorated());
       return clazz.apply(self, arguments);
-    }
-    var key, instance = new clazz(),
-        deco = new Decorated();
-    for(key in instance){
-      if (deco.hasOwnProperty(key)){
+    };
+    key = void 0;
+    instance = new clazz();
+    deco = new Decorated();
+    for (key in instance) {
+      if (deco.hasOwnProperty(key)) {
         delete instance[key];
       }
     }
@@ -130,18 +141,19 @@
   });
 
   Policies = {
-    after: function(decoration){
-      return function(method){
-        return function(){
-          var value = method.apply(this, arguments);
+    after: function(decoration) {
+      return function(method) {
+        return function() {
+          var value;
+          value = method.apply(this, arguments);
           decoration.call(this, value);
           return value;
         };
       };
     },
-    before: function(decoration){
-      return function(method){
-        return function(){
+    before: function(decoration) {
+      return function(method) {
+        return function() {
           decoration.apply(this, arguments);
           return method.apply(this, arguments);
         };
@@ -149,11 +161,14 @@
     }
   };
 
-  root = typeof exports !== "undefined" && exports !== null ? exports : window;
+  root = (typeof exports !== "undefined" && exports !== null ? exports : window);
 
   root.$Class = Class;
+
   root.$Decorator = Decorator;
+
   root.$Policies = Policies;
+
   root.$fn = fn;
 
 }).call(this);
