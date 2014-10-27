@@ -13,7 +13,6 @@ module.exports = (grunt) ->
   grunt.initConfig
     yeoman: yeomanConfig
 
-    
     coffee:
       dist:
         files: [
@@ -28,8 +27,8 @@ module.exports = (grunt) ->
         src: '<%=yeoman.dist %>/monkjs.js'
         dest: '<%=yeoman.dist %>/monkjs.min.js'
     mochaTest:
-      test: 
-        options: 
+      test:
+        options:
           reporter: 'spec'
           compilers: 'coffee:coffee-script'
         src: ['test/**/*.coffee']

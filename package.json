@@ -1,6 +1,24 @@
 {
-  "name": "monkjs",
-  "version": "0.0.0",
+  "name": "MonkJS",
+  "version": "0.1.0",
+  "description": "Create your class in javascript",
+  "main": "dist/monkjs.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oliv75/MonkJS.git"
+  },
+  "keywords": [
+    "class",
+    "object",
+    "decorator",
+    "prototype",
+    "oop"
+  ],
+  "author": "Oliv75",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Oliv75/MonkJS/issues"
+  },
   "dependencies": {},
   "devDependencies" : {
     "mocha" : "*",
