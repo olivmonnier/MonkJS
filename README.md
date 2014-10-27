@@ -82,19 +82,19 @@ var instance2 = new TodoClass();
 instance2.addTask(); // => 'new task'
 ```
 ### Policies functions
-#### After method
+After method
 ```javascript
 ```
-#### Before method
+Before method
 ```javascript
 ```
 ### List of functions
-extend method
+Extend method
 ```javascript
 ```
-include method
+Include method
 ```javascript
 ```
-flip method
+Flip method
 ```javascript
 ```
