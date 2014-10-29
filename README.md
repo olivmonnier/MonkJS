@@ -4,6 +4,10 @@ MonkJS
 ```javascript
 bower install monkjs
 ```
+or
+```javascript
+npm install monkjs
+```
 ## How it works
 ### Class
 #### How to create a class
