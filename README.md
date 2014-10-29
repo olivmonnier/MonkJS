@@ -9,7 +9,7 @@ bower install monkjs
 #### How to create a class
 ```javascript
 var Class = $Class({
-  instance: {
+  attributes: {
     name: ""
   },
   initialize: function(argument){

@@ -40,7 +40,7 @@
       }
     };
     Class = function() {
-      var Child, F, Parent, i, instance, props;
+      var Child, F, Parent, attributes, i, props;
       Parent = void 0;
       Child = void 0;
       props = void 0;
@@ -56,14 +56,14 @@
         Parent = arguments[0];
         props = arguments[1];
       }
-      if (props.hasOwnProperty("instance")) {
-        instance = props.instance;
-        delete props.instance;
+      if (props.hasOwnProperty("attributes")) {
+        attributes = props.attributes;
+        delete props.attributes;
       }
       Child = function() {
-        if (instance !== undefined) {
-          if (typeof instance === "object") {
-            fn.extend(this, instance);
+        if (attributes !== undefined) {
+          if (typeof attributes === "object") {
+            fn.extend(this, attributes);
           }
         }
         if (Child.surrogate && Child.surrogate.hasOwnProperty("initialize")) {

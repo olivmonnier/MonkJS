@@ -38,11 +38,11 @@
     else
       Parent = arguments[0]
       props = arguments[1]
-    if props.hasOwnProperty("instance")
-      instance = props.instance
-      delete props.instance
+    if props.hasOwnProperty("attributes")
+      attributes = props.attributes
+      delete props.attributes
     Child = ->
-      fn.extend this, instance  if typeof instance is "object"  if instance isnt `undefined`
+      fn.extend this, attributes  if typeof attributes is "object"  if attributes isnt `undefined`
       Child.surrogate.initialize.apply this, arguments  if Child.surrogate and Child.surrogate.hasOwnProperty("initialize")
       Child::initialize.apply this, arguments  if Child::hasOwnProperty("initialize")
       return
