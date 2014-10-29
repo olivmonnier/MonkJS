@@ -21,7 +21,7 @@ var Class = $Class({
 var instance1 = new Class('instance 1');
 instance1.name; // => 'instance 1'
 ```
-#### Methods of Class
+#### Class methods
 Class extend method
 ```javascript
 Class.extendClass({
@@ -32,7 +32,7 @@ Class.extendClass({
 
 Class.run();
 ```
-Include method
+Include method: if you want to add a new method for all instances of the class
 ```javascript
 Class.include({
   callName: function(){
@@ -42,7 +42,7 @@ Class.include({
 
 instance1.callName(); // => 'instance 1'
 ```
-#### Methods of Instance
+#### Singleton methods
 Extend method
 ```javascript
 instance1.$extend({
