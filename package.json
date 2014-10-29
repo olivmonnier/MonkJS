@@ -1,5 +1,5 @@
 {
-  "name": "MonkJS",
+  "name": "monkjs",
   "version": "0.1.0",
   "description": "Create your class in javascript",
   "main": "dist/monkjs.js",
