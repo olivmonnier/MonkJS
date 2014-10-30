@@ -22,7 +22,6 @@
         extend: function(consumer, provider) {
           var key;
           key = void 0;
-          key = void 0;
           for (key in provider) {
             if (provider.hasOwnProperty(key)) {
               consumer[key] = provider[key];
@@ -32,7 +31,6 @@
         },
         include: function(consumer, provider) {
           var key;
-          key = void 0;
           key = void 0;
           for (key in provider) {
             if (provider.hasOwnProperty(key)) {

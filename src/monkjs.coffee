@@ -16,13 +16,11 @@
 
       extend: (consumer, provider) ->
         key = undefined
-        key = undefined
         for key of provider
           consumer[key] = provider[key]  if provider.hasOwnProperty(key)
         consumer
 
       include: (consumer, provider) ->
-        key = undefined
         key = undefined
         for key of provider
           consumer::[key] = provider[key]  if provider.hasOwnProperty(key)
