@@ -2,7 +2,7 @@ MonkJS
 ======
 ## Getting started
 ```javascript
-bower install monkjs
+bower install Monkjs
 ```
 or
 ```javascript
