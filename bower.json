@@ -2,6 +2,6 @@
   "name": "monkjs",
   "description": "Create your class in javascript",
   "main": "dist/monkjs.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {}
 }

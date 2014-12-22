@@ -1,6 +1,6 @@
 {
   "name": "monkjs",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Create your class in javascript",
   "main": "dist/monkjs.js",
   "repository": {
@@ -20,11 +20,11 @@
     "url": "https://github.com/Oliv75/MonkJS/issues"
   },
   "dependencies": {},
-  "devDependencies" : {
-    "mocha" : "*",
-    "chai" : "*",
-    "sinon" : "*",
-    "grunt" : "*",
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon": "*",
+    "grunt": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-uglify": "*",
     "matchdep": "*",
